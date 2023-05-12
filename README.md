@@ -1,48 +1,39 @@
-# Blockedu - Serviço de Emissão de Certificados em Blockchain
+# Microsserviço de Emissão de Certificados
 
-O Blockedu é um serviço de emissão de certificados em blockchain que permite às instituições de ensino emitirem certificados de forma segura, confiável e imutável. Ele utiliza a tecnologia de blockchain para garantir a integridade e autenticidade dos certificados emitidos, proporcionando transparência e rastreabilidade.
+Este é o microsserviço responsável pela emissão de certificados das instituições de ensino. Ele permite que as instituições cadastrem alunos, cursos e emitem certificados relacionados aos cursos concluídos pelos alunos. O microsserviço também integra-se com a blockchain para registrar os certificados de forma segura e imutável.
 
-## Funcionalidades Principais
+## Funcionalidades
 
-- **Emissão de Certificados**: Permite que as instituições de ensino emitam certificados para os alunos que concluíram com sucesso os cursos oferecidos.
-- **Validação em Blockchain**: Integra-se a um microsserviço de blockchain para registrar os certificados emitidos como transações na cadeia de blocos, garantindo sua segurança e imutabilidade.
-- **Cadastro de Alunos**: Permite o cadastro de alunos, incluindo informações como nome, e-mail e número de identificação.
-- **Cadastro de Cursos**: Permite o cadastro de cursos oferecidos pelas instituições, incluindo informações como nome, carga horária e descrição.
-- **Autenticação e Segurança**: Implementa um sistema de autenticação seguro para as instituições de ensino acessarem o serviço. Utiliza criptografia e assinaturas digitais para proteger os certificados e garantir sua autenticidade.
+- **Autenticação**: Permite que as instituições de ensino realizem autenticação no sistema para acessar as funcionalidades de emissão de certificados.
+- **Cadastro de Alunos**: Permite o cadastro de novos alunos no sistema, fornecendo informações como nome, e-mail e número de identificação do aluno.
+- **Cadastro de Cursos**: Permite o cadastro de novos cursos no sistema, informando o nome do curso, a carga horária e outros detalhes relevantes.
+- **Emissão de Certificados**: Permite a emissão de certificados para os alunos que concluíram com sucesso um curso específico. O certificado contém informações sobre o aluno, o curso concluído e é assinado digitalmente para garantir sua autenticidade.
+- **Integração com a Blockchain**: O microsserviço se integra com o microsserviço da blockchain para registrar os certificados emitidos de forma segura e imutável. Os certificados são armazenados na blockchain como transações em blocos, garantindo a rastreabilidade e a integridade dos dados.
 
-## Arquitetura do Sistema
+## Configuração e Execução
 
-O Blockedu é construído em uma arquitetura de microsserviços, composta pelos seguintes componentes:
+Para executar o microsserviço de Emissão de Certificados, siga as instruções abaixo:
 
-1. **Microsserviço de Emissão de Certificados**: Responsável pela emissão dos certificados, cadastro de alunos e cursos, autenticação das instituições de ensino e integração com o microsserviço da blockchain.
+### Pré-requisitos
 
-2. **Microsserviço da Blockchain**: Gerencia a blockchain utilizada para registrar os certificados emitidos. Responsável pela criação de blocos, validação da cadeia, verificação de consenso e segurança das transações.
+- Certifique-se de ter o JDK (Java Development Kit) instalado em sua máquina.
+- Verifique se todas as dependências necessárias estão instaladas corretamente.
 
-3. **Comunicação via Sockets**: Os microsserviços se comunicam por meio de sockets para trocar informações e realizar operações relacionadas à emissão e registro de certificados.
+### Configuração
 
-## Cronograma de Implementação
+- Configure as informações de conexão com a blockchain no arquivo de configuração correspondente.
+- Verifique se as configurações do banco de dados estão corretas.
 
-O desenvolvimento do Blockedu será realizado em um cronograma de quatro semanas, com as seguintes etapas:
+### Execução
 
-1. **Semana 1**: Modelagem dos microsserviços
-   - Revisar requisitos
-   - Modelar microsserviço de emissão de certificados
-   - Modelar microsserviço da blockchain
-   - Definir escopo das funcionalidades
+- Execute o microsserviço de acordo com o ambiente de desenvolvimento escolhido.
+- Certifique-se de que o serviço está sendo executado na porta correta.
 
-2. **Semana 2**: Implementação do microsserviço de Emissão de Certificados
-   - Cadastro de alunos e cursos
-   - Emissão de certificados
-   - Testes Unitários
-   - Integração com o microsserviço da blockchain
+### Testes
 
-3. **Semana 3**: Implementação do microsserviço da Blockchain
-   - Criação de blocos
-   - Validação da cadeia
-   - Verificação de consenso
-   - Testes Unitários
+- Execute os testes unitários disponíveis para garantir o funcionamento correto das funcionalidades.
+- Verifique se todas as funcionalidades do microsserviço estão operacionais.
 
-4. **Semana 4**: Integração por Sockets e Testes
-   - Implementação da comunicação via sockets
-   - Integração dos microsserviços
-   - Testes de integração
+## Atenção
+
+Nota: Certifique-se de ter os microsserviços de Emissão de Certificados e de Blockchain configurados e em execução corretamente para garantir o funcionamento adequado do sistema como um todo.
