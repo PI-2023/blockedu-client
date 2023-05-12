@@ -34,8 +34,6 @@ Para executar o microsserviço de Emissão de Certificados, siga as instruções
 - Execute os testes unitários disponíveis para garantir o funcionamento correto das funcionalidades.
 - Verifique se todas as funcionalidades do microsserviço estão operacionais.
 
-## Documentação
-
-Para mais informações sobre a API do microsserviço e detalhes sobre os endpoints disponíveis, consulte a documentação correspondente.
+## Atenção
 
 Nota: Certifique-se de ter os microsserviços de Emissão de Certificados e de Blockchain configurados e em execução corretamente para garantir o funcionamento adequado do sistema como um todo.
