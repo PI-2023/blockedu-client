@@ -1,17 +1,36 @@
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
 public class CertificadoTest {
-    public static void main(String[] args) {
-        Certificado certificado = new Certificado(LocalDate.now(), "João da Silva", "Validade varios anos");
 
-        System.out.println("Data de Emissão: " + certificado.getDataEmissao());
-        System.out.println("Assinatura: " + certificado.getAssinatura());
-        System.out.println("Informações Adicionais: " + certificado.getInformacoesAdicionais());
+    @Test
+    public void testSetDataEmissao_SetsDataEmissao() {
+        LocalDate dataEmissao = LocalDate.of(2023, 5, 20);
+        Certificado certificado = new Certificado(LocalDate.of(2022, 1, 1), "Assinatura", "Informações adicionais");
 
-        certificado.setDataEmissao(LocalDate.of(2023, 5, 1));
-        certificado.setAssinatura("Anitinha");
-        certificado.setInformacoesAdicionais("Ta certificado (y)");
+        certificado.setDataEmissao(dataEmissao);
 
-        System.out.println(certificado.toString());
+        Assertions.assertEquals(dataEmissao, certificado.getDataEmissao());
+    }
+
+    @Test
+    public void testSetAssinatura_SetsAssinatura() {
+        String assinatura = "Nova assinatura";
+        Certificado certificado = new Certificado(LocalDate.of(2022, 1, 1), "Assinatura", "Informações adicionais");
+
+        certificado.setAssinatura(assinatura);
+
+        Assertions.assertEquals(assinatura, certificado.getAssinatura());
+    }
+
+    @Test
+    public void testSetInformacoesAdicionais_SetsInformacoesAdicionais() {
+        String informacoesAdicionais = "Novas informações adicionais";
+        Certificado certificado = new Certificado(LocalDate.of(2022, 1, 1), "Assinatura", "Informações adicionais");
+
+        certificado.setInformacoesAdicionais(informacoesAdicionais);
+
+        Assertions.assertEquals(informacoesAdicionais, certificado.getInformacoesAdicionais());
     }
 }

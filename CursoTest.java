@@ -1,19 +1,61 @@
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 public class CursoTest {
-    public static void main(String[] args) {
-        // Criando um objeto Curso e definindo seus atributos
-        Curso curso = new Curso("Kenji e o Java", "Java orientado a orentiação", 40);
 
-        // Testando os métodos getter
-        System.out.println("Nome: " + curso.getNome());
-        System.out.println("Descrição: " + curso.getDescricao());
-        System.out.println("Carga Horária: " + curso.getCargaHoraria());
+    @Test
+    public void testGetNome() {
+        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
+        String nome = curso.getNome();
+        Assertions.assertEquals("Java", nome);
+    }
 
-        // Testando os métodos setter
-        curso.setNome("Inteligência Artificial");
-        curso.setDescricao("Tem IA no curso, ctz.");
-        curso.setCargaHoraria(30);
+    @Test
+    public void testSetNome() {
+        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
+        curso.setNome("Python");
+        String nome = curso.getNome();
+        Assertions.assertEquals("Python", nome);
+    }
 
-        // Imprimindo o objeto curso utilizando o método toString()
-        System.out.println(curso.toString());
+    @Test
+    public void testGetDescricao() {
+        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
+        String descricao = curso.getDescricao();
+        Assertions.assertEquals("Curso de programação em Java", descricao);
+    }
+
+    @Test
+    public void testSetDescricao() {
+        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
+        curso.setDescricao("Curso de programação em Python");
+        String descricao = curso.getDescricao();
+        Assertions.assertEquals("Curso de programação em Python", descricao);
+    }
+
+    @Test
+    public void testGetCargaHoraria() {
+        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
+        int cargaHoraria = curso.getCargaHoraria();
+        Assertions.assertEquals(40, cargaHoraria);
+    }
+
+    @Test
+    public void testSetCargaHoraria() {
+        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
+        curso.setCargaHoraria(60);
+        int cargaHoraria = curso.getCargaHoraria();
+        Assertions.assertEquals(60, cargaHoraria);
+    }
+
+    @Test
+    public void testToString() {
+        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
+        String expected = "Curso\n\n" +
+                "nome= Java\n" +
+                "descricao= Curso de programação em Java\n" +
+                "cargaHoraria= 40";
+        String result = curso.toString();
+        Assertions.assertEquals(expected, result);
     }
 }
