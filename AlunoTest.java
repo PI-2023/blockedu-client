@@ -42,5 +42,6 @@ public class AlunoTest {
         aluno.setTelefoneCelular(telefone);
 
         Assertions.assertEquals(telefone, aluno.getTelefoneCelular());
+
     }
 }

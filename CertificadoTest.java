@@ -32,5 +32,6 @@ public class CertificadoTest {
         certificado.setInformacoesAdicionais(informacoesAdicionais);
 
         Assertions.assertEquals(informacoesAdicionais, certificado.getInformacoesAdicionais());
+
     }
 }
