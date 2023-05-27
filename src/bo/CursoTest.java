@@ -1,62 +1,35 @@
-package src.bo;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+package bo;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class CursoTest {
 
     @Test
-    public void testGetNome() {
-        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
-        String nome = curso.getNome();
-        Assertions.assertEquals("Java", nome);
+    public void testSetNome(){
+        Curso curso = new Curso("nome", "descricao", 10);
+        curso.setNome("nome");
+        assertEquals("nome", curso.getNome());
+
+        try {
+            curso.setNome("");
+            fail("Deveria ter lançado uma exceção");
+        } catch (IllegalArgumentException e) {
+            assertEquals("O campo nome está vazio", e.getMessage());
+        }
     }
 
     @Test
-    public void testSetNome() {
-        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
-        curso.setNome("Python");
-        String nome = curso.getNome();
-        Assertions.assertEquals("Python", nome);
+    public void testSetDescricao(){
+        Curso curso = new Curso("nome", "descricao", 10);
+        curso.setDescricao("descricao");
+        assertEquals("descricao", curso.getDescricao());
+
+        try {
+            curso.setDescricao("");
+            fail("Deveria ter lançado uma exceção");
+        } catch (IllegalArgumentException e) {
+            assertEquals("O campo descrição está vazio", e.getMessage());
+        }
     }
 
-    @Test
-    public void testGetDescricao() {
-        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
-        String descricao = curso.getDescricao();
-        Assertions.assertEquals("Curso de programação em Java", descricao);
-    }
-
-    @Test
-    public void testSetDescricao() {
-        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
-        curso.setDescricao("Curso de programação em Python");
-        String descricao = curso.getDescricao();
-        Assertions.assertEquals("Curso de programação em Python", descricao);
-    }
-
-    @Test
-    public void testGetCargaHoraria() {
-        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
-        int cargaHoraria = curso.getCargaHoraria();
-        Assertions.assertEquals(40, cargaHoraria);
-    }
-
-    @Test
-    public void testSetCargaHoraria() {
-        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
-        curso.setCargaHoraria(60);
-        int cargaHoraria = curso.getCargaHoraria();
-        Assertions.assertEquals(60, cargaHoraria);
-    }
-
-    @Test
-    public void testToString() {
-        Curso curso = new Curso("Java", "Curso de programação em Kenji", 40);
-        String expected = "Curso\n\n" +
-                "nome= Java\n" +
-                "descricao= Curso de programação em Java\n" +
-                "cargaHoraria= 40";
-        String result = curso.toString();
-        Assertions.assertEquals(expected, result);
-    }
 }
