@@ -1,4 +1,4 @@
-package src.bo;
+package bo;
 import java.time.LocalDate;
 
 public class Certificado {
@@ -17,6 +17,9 @@ public class Certificado {
     }
 
     public void setDataEmissao(LocalDate dataEmissao) {
+        if (dataEmissao == null)
+            throw new IllegalArgumentException("Data de emissão não estar vazia.");
+
         this.dataEmissao = dataEmissao;
     }
 
@@ -25,6 +28,9 @@ public class Certificado {
     }
 
     public void setAssinatura(String assinatura) {
+        if (assinatura == null)
+            throw new IllegalArgumentException("Assinatura não pode estar vazia.");
+
         this.assinatura = assinatura;
     }
 

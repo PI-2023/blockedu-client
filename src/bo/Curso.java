@@ -1,4 +1,4 @@
-package src.bo;
+package bo;
 public class Curso {
     private String nome;
     private String descricao;
@@ -15,6 +15,10 @@ public class Curso {
     }
 
     public void setNome(String nome) {
+        if (nome.isEmpty()) {
+            throw new IllegalArgumentException("O campo nome está vazio");
+        }
+
         this.nome = nome;
     }
 
@@ -23,6 +27,10 @@ public class Curso {
     }
 
     public void setDescricao(String descricao) {
+        if (descricao.isEmpty()) {
+            throw new IllegalArgumentException("O campo descrição está vazio");
+        }
+
         this.descricao = descricao;
     }
 

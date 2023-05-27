@@ -1,4 +1,4 @@
-package src.bo;
+package bo;
 public class InstituicaoEnsino {
     private String nome;
     private String email;
@@ -21,6 +21,9 @@ public class InstituicaoEnsino {
     }
 
     public void setNome(String nome) {
+        if (nome.isEmpty()) {
+            throw new IllegalArgumentException("Nome da Instituição de ensino está vazio");
+        }
         this.nome = nome;
     }
 
@@ -29,6 +32,10 @@ public class InstituicaoEnsino {
     }
 
     public void setEmail(String email) {
+        if (email.isEmpty()) {
+            throw new IllegalArgumentException("Email da Instituição de ensino está vazio");
+        }
+
         this.email = email;
     }
 

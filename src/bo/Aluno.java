@@ -32,6 +32,9 @@ public class Aluno {
     }
 
     public void setNome(String nome) {
+        if (nome.isEmpty()) {
+            throw new IllegalArgumentException("O campo nome está vazio");
+        }
         this.nome = nome;
     }
 
@@ -40,6 +43,10 @@ public class Aluno {
     }
 
     public void setEmail(String email) {
+        if (email.isEmpty()) {
+            throw new IllegalArgumentException("O campo email está vazio");
+        }
+
         this.email = email;
     }
 
@@ -56,9 +63,6 @@ public class Aluno {
     }
 
     public void setTelefoneCelular(String telefoneCelular) {
-        if (telefoneCelular.length() != 11) {
-            throw new IllegalArgumentException("Telefone inválido");
-        }
         this.telefoneCelular = telefoneCelular;
     }
 
