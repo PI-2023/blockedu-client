@@ -58,6 +58,10 @@ public class AlunoVO {
       throw new IllegalArgumentException("O campo email deve ter no mínimo 11 caracteres");
     } else if (email.length() > 64) {
       throw new IllegalArgumentException("O campo email deve ter no máximo 64 caracteres");
+    } else if (!email.contains("@")) {
+      throw new IllegalArgumentException("O campo email deve conter @");
+    } else if (!email.contains(".")) {
+      throw new IllegalArgumentException("O campo email deve conter .");
     }
 
     this.email = email;

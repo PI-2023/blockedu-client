@@ -44,6 +44,21 @@ public class AlunoVOtest {
         } catch (IllegalArgumentException e) {
             assertEquals("O campo email deve ter no máximo 64 caracteres", e.getMessage());
         }
+
+        try {
+            aluno.setEmail("aluno.do.ifal.com");
+            fail("Deveria ter lançado uma exceção");
+        } catch (IllegalArgumentException e) {
+            assertEquals("O campo email deve ter @ e . em seu campo", e.getMessage());
+        }
+
+        try {
+            aluno.setEmail("alunodo@ifalcom");
+            fail("Deveria ter lançado uma exceção");
+        } catch (IllegalArgumentException e) {
+            assertEquals("O campo email deve ter @ e . em seu campo", e.getMessage());
+        }
+
     }
 
     @Test
