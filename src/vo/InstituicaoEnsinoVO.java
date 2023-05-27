@@ -41,6 +41,10 @@ public class InstituicaoEnsinoVO {
             throw new IllegalArgumentException("Email da instituição de ensino excede 64 caracteres");
         } else if (email.length() < 11) {
             throw new IllegalArgumentException("Email da instituição de ensino inferior a 11 caracteres");
+        } else if (!email.contains("@")) {
+            throw new IllegalArgumentException("Email da instituição de ensino não contém @");
+        } else if (!email.contains(".")) {
+            throw new IllegalArgumentException("Email da instituição de ensino não contém .");
         }
 
         this.email = email;
