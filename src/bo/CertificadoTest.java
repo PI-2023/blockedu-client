@@ -1,38 +1,38 @@
-package src.bo;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+package bo;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
 import java.time.LocalDate;
+import java.time.Month;
 
 public class CertificadoTest {
 
     @Test
-    public void testSetDataEmissao_SetsDataEmissao() {
-        LocalDate dataEmissao = LocalDate.of(2023, 5, 20);
-        Certificado certificado = new Certificado(LocalDate.of(2022, 1, 1), "Assinatura", "Informações adicionais");
+    public void testSetDataEmissao() {
+        Certificado certificado = new Certificado(LocalDate.of(2007, Month.MAY, 19), "Andrézin rei delas", "Curso introdutorio em java recomendo muito!");
+        certificado.setDataEmissao(LocalDate.of(2007, Month.MAY, 19));
+        assertEquals(LocalDate.of(2007, Month.MAY, 19), certificado.getDataEmissao());
 
-        certificado.setDataEmissao(dataEmissao);
-
-        Assertions.assertEquals(dataEmissao, certificado.getDataEmissao());
+        try {certificado.setDataEmissao(null);
+            fail("Deve lançar uma exception");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Data de emissão não pode estar vazia.", e.getMessage());
+        }
     }
 
     @Test
-    public void testSetAssinatura_SetsAssinatura() {
-        String assinatura = "Nova assinatura";
-        Certificado certificado = new Certificado(LocalDate.of(2022, 1, 1), "Assinatura", "Informações adicionais");
+    public void testSetAssinatura(){
+        Certificado certificado = new Certificado(LocalDate.of(2007, Month.MAY, 19), "Andrézin rei delas", "Curso introdutorio em java recomendo muito!");
+        certificado.setAssinatura("Andrézin rei delas");
+        assertEquals("Andrézin rei delas", certificado.getAssinatura());
 
-        certificado.setAssinatura(assinatura);
-
-        Assertions.assertEquals(assinatura, certificado.getAssinatura());
+        try {
+            certificado.setAssinatura("");
+            fail("Deve lançar uma exception");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Assinatura não pode estar vazia.", e.getMessage());
+        }
     }
 
-    @Test
-    public void testSetInformacoesAdicionais_SetsInformacoesAdicionais() {
-        String informacoesAdicionais = "Novas informações adicionais";
-        Certificado certificado = new Certificado(LocalDate.of(2022, 1, 1), "Assinatura", "Informações adicionais");
 
-        certificado.setInformacoesAdicionais(informacoesAdicionais);
-
-        Assertions.assertEquals(informacoesAdicionais, certificado.getInformacoesAdicionais());
-
-    }
 }
