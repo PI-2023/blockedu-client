@@ -1,6 +1,5 @@
-package src.bo;
+package bo;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class AuthServiceTest {
