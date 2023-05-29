@@ -47,6 +47,17 @@ public class CertificadoVO {
         this.informacoesAdicionais = informacoesAdicionais;
     }
 
+    private void validacaoCertificado{
+        if (dataEmissao.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("A data de emissão não pode ser posterior à data atual");
+        } else if (dataEmissao.isBefore(LocalDate.of(1900, 1, 1))) {
+            throw new IllegalArgumentException("A data de emissão não pode ser anterior à 01/01/1900");
+        }
+        if (informacoesAdicionais.length() > 300) {
+            throw new IllegalArgumentException("O campo informações adicionais deve ter no máximo 300 caracteres");
+        }
+    }
+
     @Override
     public String toString() {
         return "Certificado\n\n" +
