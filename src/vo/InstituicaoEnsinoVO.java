@@ -1,24 +1,39 @@
 package vo;
 
 public class InstituicaoEnsinoVO {
+    private int id;
     private String nome;
     private String email;
-    private String chavePrimaria;
+    private String chavePrivada;
     private String chavePublica;
     private String codigoAcesso;
 
-    public InstituicaoEnsinoVO(String nome, String email, String chavePrimaria, String chavePublica, String codigoAcesso) {
+    public InstituicaoEnsinoVO(String nome, String email, String chavePrivada, String chavePublica, String codigoAcesso) {
         this.nome = nome;
         this.email = email;
-        this.chavePrimaria = chavePrimaria;
+        this.chavePrivada = chavePrivada;
         this.chavePublica = chavePublica;
         this.codigoAcesso = codigoAcesso;
-
     }
 
+    public InstituicaoEnsinoVO(int id, String nome, String email, String chavePrivada, String chavePublica, String codigoAcesso) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.chavePrivada = chavePrivada;
+        this.chavePublica = chavePublica;
+        this.codigoAcesso = codigoAcesso;
+    }
+
+    public int getId() {
+        return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
-
         return nome;
     }
 
@@ -50,12 +65,12 @@ public class InstituicaoEnsinoVO {
         this.email = email;
     }
 
-    public String getChavePrimaria() {
-        return chavePrimaria;
+    public String getChavePrivada() {
+        return chavePrivada;
     }
 
-    public void setChavePrimaria(String chavePrimaria) {
-        this.chavePrimaria = chavePrimaria;
+    public void setChavePrivada(String chavePrivada) {
+        this.chavePrivada = chavePrivada;
     }
 
     public String getChavePublica() {
@@ -84,7 +99,7 @@ public class InstituicaoEnsinoVO {
         return "Instituicao de Ensino\n\n" +
                 "nome= " + nome + '\n' +
                 "email= " + email + '\n' +
-                "chavePrimaria= " + chavePrimaria + '\n' +
+                "chavePrivada= " + chavePrivada + '\n' +
                 "chavePublica= " + chavePublica + '\n' +
                 "codigoAcesso= " + codigoAcesso + '\n';
     }
