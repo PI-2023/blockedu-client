@@ -3,6 +3,7 @@ package vo;
 import java.time.LocalDate;
 
 public class CertificadoVO {
+    private int id;
     private LocalDate dataEmissao;
     private String assinatura;
     private String informacoesAdicionais;
@@ -11,6 +12,21 @@ public class CertificadoVO {
         this.dataEmissao = dataEmissao;
         this.assinatura = assinatura;
         this.informacoesAdicionais = informacoesAdicionais;
+    }
+
+    public CertificadoVO(int id, LocalDate dataEmissao, String assinatura, String informacoesAdicionais) {
+        this.id = id;
+        this.dataEmissao = dataEmissao;
+        this.assinatura = assinatura;
+        this.informacoesAdicionais = informacoesAdicionais;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public LocalDate getDataEmissao() {
