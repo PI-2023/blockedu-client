@@ -1,5 +1,8 @@
-package vo;
+package __tests__.vo;
 import org.junit.Test;
+
+import vo.CursoVO;
+
 import static org.junit.Assert.*;
 public class CursoVOtest {
 

@@ -1,7 +1,10 @@
-package bo;
+package __tests__.bo;
 import java.time.LocalDate;
 import java.time.Month;
 import org.junit.Test;
+
+import bo.Aluno;
+
 import static org.junit.Assert.*;
 
 public class AlunoTest {

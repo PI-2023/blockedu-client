@@ -1,5 +1,8 @@
 
 import java.util.Scanner;
+
+import bo.AuthService;
+
 import java.io.Console;
 
 public class ViewAutenticar {

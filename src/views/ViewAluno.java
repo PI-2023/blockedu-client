@@ -1,5 +1,8 @@
 
 import java.util.Scanner;
+
+import bo.Aluno;
+
 import java.time.LocalDate;
 
 public class ViewAluno {

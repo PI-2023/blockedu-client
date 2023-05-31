@@ -1,6 +1,8 @@
 
 import java.util.Scanner;
 
+import bo.Curso;
+
 public class ViewCursos {
     Scanner input = new Scanner(System.in);
     Scanner inputN = new Scanner(System.in);

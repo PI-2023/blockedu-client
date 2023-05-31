@@ -1,5 +1,9 @@
-package bo;
+package __tests__.bo;
 import org.junit.Test;
+
+import bo.AuthService;
+import bo.InstituicaoEnsino;
+
 import static org.junit.Assert.*;
 
 public class AuthServiceTest {

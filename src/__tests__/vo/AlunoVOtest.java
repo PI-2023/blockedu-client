@@ -1,8 +1,11 @@
-package vo;
+package __tests__.vo;
 import java.time.LocalDate;
 import java.time.Month;
 
 import org.junit.Test;
+
+import vo.AlunoVO;
+
 import static org.junit.Assert.*;
 
 public class AlunoVOtest {
