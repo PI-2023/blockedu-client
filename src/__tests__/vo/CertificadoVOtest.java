@@ -1,5 +1,8 @@
-package vo;
+package __tests__.vo;
 import org.junit.Test;
+
+import vo.CertificadoVO;
+
 import static org.junit.Assert.*;
 import java.time.LocalDate;
 import java.time.Month;

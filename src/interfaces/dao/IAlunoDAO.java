@@ -1,7 +1,8 @@
-package dao;
+package interfaces.dao;
 
 import java.util.List;
 
+import dao.AlunoDAOException;
 import vo.AlunoVO;
 
 public interface IAlunoDAO {

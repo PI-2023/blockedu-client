@@ -1,6 +1,9 @@
-package dao;
+package __tests__.dao;
 
 import org.junit.Test;
+
+import dao.ConexaoBancoDAO;
+import dao.ConexaoBancoDAOException;
 
 import java.sql.Connection;
 

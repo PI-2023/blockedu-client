@@ -1,5 +1,8 @@
-package bo;
+package __tests__.bo;
 import org.junit.Test;
+
+import bo.Curso;
+
 import static org.junit.Assert.*;
 
 public class CursoTest {

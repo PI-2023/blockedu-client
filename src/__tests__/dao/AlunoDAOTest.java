@@ -1,4 +1,4 @@
-package dao;
+package __tests__.dao;
 
 import static org.junit.Assert.assertTrue;
 
