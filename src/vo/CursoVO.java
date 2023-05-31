@@ -1,6 +1,7 @@
 package vo;
 
 public class CursoVO {
+    private int id;
     private String nome;
     private String descricao;
     private int cargaHoraria;
@@ -9,6 +10,21 @@ public class CursoVO {
         this.nome = nome;
         this.descricao = descricao;
         this.cargaHoraria = cargaHoraria;
+    }
+
+    public CursoVO(int id, String nome, String descricao, int cargaHoraria) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.cargaHoraria = cargaHoraria;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
