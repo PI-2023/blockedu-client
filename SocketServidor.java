@@ -7,7 +7,7 @@ public class SocketServidor {
     public static void main(String[] args) {
         ServerSocket server = null;
         try {
-            System.out.println("Startando o servidor...");
+            System.out.println("\033[H\033[2J" +"Startando o servidor...");
             server = new ServerSocket(5555);
             System.out.print("Servidor Startado");
             Socket s;
