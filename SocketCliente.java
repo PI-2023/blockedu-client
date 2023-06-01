@@ -19,7 +19,11 @@ public class SocketCliente {
 
                         while (true) {
                             String mensagem = leitor.readLine();
-                            System.out.println("O servidor disse: " + mensagem);
+                            if (mensagem != null){
+                                System.out.println(mensagem);
+                            }
+
+                            
                         }
 
                     } catch (IOException e) {
