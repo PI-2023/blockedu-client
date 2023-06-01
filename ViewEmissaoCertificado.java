@@ -33,6 +33,7 @@ public class ViewEmissaoCertificado {
                     // if (aluno.getCpf(cpf));{  
                     // }
                     escritor.println("ideia repassada em ViewEmitirCertificado");
+                    this.cliente.close();
                     
                 } catch (Exception e) {
                     escritor.println("\nDados incorretos!");
