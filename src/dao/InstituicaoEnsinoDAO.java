@@ -29,7 +29,7 @@ public class InstituicaoEnsinoDAO implements IInstituicaoEnsinoDAO {
 
   @Override
   public InstituicaoEnsinoVO buscar(String nomeOuEmail) throws InstituicaoEnsinoDAOException {
-    String query = "SELECT * FROM InsituicaoEnsino WHERE nome = ? OR email = ? LIMIT 1;";
+    String query = "SELECT * FROM InstituicaoEnsino WHERE nome = ? OR email = ? LIMIT 1;";
 
     try {
       PreparedStatement stmt = this.conexao.prepareStatement(query);
@@ -50,7 +50,7 @@ public class InstituicaoEnsinoDAO implements IInstituicaoEnsinoDAO {
 
   @Override
   public void inserir(InstituicaoEnsinoVO instituicaoVO) throws InstituicaoEnsinoDAOException {
-    String query = "INSERT INTO IntituicaoEnsino (nome, email, chave_privada, chave_publica, codigo_acesso) VALUES (?, ?, ?, ?, ?);";
+    String query = "INSERT INTO InstituicaoEnsino (nome, email, chave_privada, chave_publica, codigo_acesso) VALUES (?, ?, ?, ?, ?);";
 
     try {
       PreparedStatement stmt = this.conexao.prepareStatement(query);
