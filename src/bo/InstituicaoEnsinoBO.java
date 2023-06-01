@@ -1,9 +1,11 @@
 package bo;
 
+import java.security.Key;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Base64;
 
 import dao.ConexaoBancoDAOException;
 import dao.InstituicaoEnsinoDAO;
@@ -30,8 +32,8 @@ public class InstituicaoEnsinoBO implements IInstituicaoEnsinoBO {
             throw new InstituicaoEnsinoBOException(e.getMessage());
         }
         
-        instituicaoEnsinoVO.setChavePrivada(chaves.getPrivate().toString());
-        instituicaoEnsinoVO.setChavePublica(chaves.getPublic().toString());
+        instituicaoEnsinoVO.setChavePrivada(codificarChave(chaves.getPrivate()));
+        instituicaoEnsinoVO.setChavePublica(codificarChave(chaves.getPublic()));
         instituicaoEnsinoVO.setCodigoAcesso(codigoAcesso);
 
         
@@ -86,6 +88,12 @@ public class InstituicaoEnsinoBO implements IInstituicaoEnsinoBO {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         keyPairGenerator.initialize(1024);
         return keyPairGenerator.genKeyPair();
+    }
+
+
+    private static String codificarChave(Key chave) {
+        byte[] chaveEncoded = chave.getEncoded();
+        return Base64.getEncoder().encodeToString(chaveEncoded);
     }
 }
 
