@@ -9,6 +9,7 @@ import dao.ConexaoBancoDAOException;
 import dao.CertificadoDAO;
 import dao.CertificadoDAOException;
 import so.DocumentSigner;
+import so.SocketClient;
 import vo.AlunoVO;
 import vo.CertificadoVO;
 import vo.CursoVO;
@@ -35,11 +36,14 @@ public class CertificadoBO  {
     }
   }
 
-  public void cadastrarCertificado(AlunoVO alunoVO, CursoVO cursoVO, String informacoesAdicionais) throws CertificadoBOException {
+  public String cadastrarCertificado(AlunoVO alunoVO, CursoVO cursoVO, String informacoesAdicionais) throws CertificadoBOException {
     try {
       byte[] bytesAssinatura = this.documentSigner.signDocument(informacoesAdicionais.getBytes());
       CertificadoVO certificadoVO = new CertificadoVO(LocalDate.now(), bytesAssinatura.toString(), informacoesAdicionais);
       this.certificadoDAO.inserir(this.instituicaoVO, alunoVO, cursoVO, certificadoVO);
+      SocketClient clienteBlockchain = new SocketClient();
+      String hash = clienteBlockchain.enviarCertificado(bytesAssinatura.toString());
+      return hash;
     } catch (Exception e) {
       throw new CertificadoBOException(e.getMessage());
     }

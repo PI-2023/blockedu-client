@@ -83,8 +83,9 @@ public class CertificadoView {
       AlunoVO alunoVO = alunoBO.buscarAluno(cpfAluno);
       CursoVO cursoVO = cursoBO.buscarCurso(idCurso);
       String infos = "Aluno: " + alunoVO.getNome() + " , Curso:" + cursoVO.getNome() + " , Instituição: " + instituicaoEnsinoVO.getNome();
-      certificadoBO.cadastrarCertificado(alunoVO, cursoVO, infos);
+      String hashCertificado = certificadoBO.cadastrarCertificado(alunoVO, cursoVO, infos);
       System.out.println("Certificado emitido com sucesso!");
+      System.out.println("Hash do bloco: " + hashCertificado);
     } catch (Exception e) {
       System.out.println("Erro ao emitir certificado: " + e.getMessage());
     }
