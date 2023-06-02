@@ -22,6 +22,7 @@ public class CertificadoView {
   private Scanner scanner;
 
   public CertificadoView(InstituicaoEnsinoVO instituicao) throws ConexaoBancoDAOException, NoSuchAlgorithmException, InvalidKeySpecException {
+    this.instituicaoEnsinoVO = instituicao;
     this.certificadoBO = new CertificadoBO(instituicao);
     this.alunoBO = new AlunoBO(instituicao);
     this.cursoBO = new CursoBO(instituicao);
