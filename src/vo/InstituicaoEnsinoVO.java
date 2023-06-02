@@ -8,12 +8,9 @@ public class InstituicaoEnsinoVO {
     private String chavePublica;
     private String codigoAcesso;
 
-    public InstituicaoEnsinoVO(String nome, String email, String chavePrivada, String chavePublica, String codigoAcesso) {
+    public InstituicaoEnsinoVO(String nome, String email) {
         this.nome = nome;
         this.email = email;
-        this.chavePrivada = chavePrivada;
-        this.chavePublica = chavePublica;
-        this.codigoAcesso = codigoAcesso;
     }
 
     public InstituicaoEnsinoVO(int id, String nome, String email, String chavePrivada, String chavePublica, String codigoAcesso) {
