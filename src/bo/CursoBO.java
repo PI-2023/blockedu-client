@@ -19,6 +19,14 @@ public class CursoBO implements ICursoBO {
     this.cursoDAO = new CursoDAO();
   }
 
+  public CursoVO buscarCurso(int id) throws CursoBOException {
+    try {
+      return this.cursoDAO.buscar(this.instituicaoVO, id);
+    } catch (Exception e) {
+      throw new CursoBOException(e.getMessage());
+    }
+  }
+
   @Override
   public List<CursoVO> buscarTodosCursos() throws CursoBOException {
     try {

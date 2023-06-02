@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +37,12 @@ public class CertificadoDAO implements ICertificadoDAO {
   @Override
   public List<CertificadoVO> buscarTodos(InstituicaoEnsinoVO instituicaoVO) throws CertificadoDAOException {
     List<CertificadoVO> certificados = new ArrayList<>();
-    String query = "SELECT * FROM Certificado ORDER BY data_emissao WHERE instituicao_id = ?;";
+    String query = "SELECT * FROM Certificado WHERE instituicao_id = ?;";
 
     try {
       PreparedStatement stmt = this.conexao.prepareStatement(query);
       stmt.setInt(1, instituicaoVO.getId());
-      ResultSet rset = stmt.executeQuery(query);
+      ResultSet rset = stmt.executeQuery();
 
       while (rset.next()) {
         CertificadoVO certificado = criarCertificadoVO(rset);

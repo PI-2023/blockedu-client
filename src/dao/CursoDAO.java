@@ -30,15 +30,34 @@ public class CursoDAO implements ICursoDAO {
 		this.conexao = conexao;
 	}
   
-  @Override
-  public List<CursoVO> buscarTodos(InstituicaoEnsinoVO instituicao) throws CursoDAOException {
-    List<CursoVO> cursos = new ArrayList<>();
-    String query = "SELECT * FROM Curso WHERE instituicao_id = ? ORDER BY nome;";
+  public CursoVO buscar(InstituicaoEnsinoVO instituicao, int id) throws CursoDAOException {
+    String query = "SELECT * FROM Curso WHERE instituicao_id = ? AND id = ?";
 
     try {
       PreparedStatement stmt = this.conexao.prepareStatement(query);
       stmt.setInt(1, instituicao.getId());
-      ResultSet rset = stmt.executeQuery(query);
+      stmt.setInt(2, id);
+      ResultSet rset = stmt.executeQuery();
+      if (rset.next()) {
+        return criarCursoVO(rset);
+      }
+    } catch (Exception e) {
+      throw new CursoDAOException(e.getMessage());
+    }
+
+    return null;
+  }
+
+  @Override
+  public List<CursoVO> buscarTodos(InstituicaoEnsinoVO instituicao) throws CursoDAOException {
+    List<CursoVO> cursos = new ArrayList<>();
+    System.out.println(instituicao.getId());
+    String query = "SELECT * FROM Curso WHERE instituicao_id = ?;";
+
+    try {
+      PreparedStatement stmt = this.conexao.prepareStatement(query);
+      stmt.setInt(1, instituicao.getId());
+      ResultSet rset = stmt.executeQuery();
 
       while (rset.next()) {
         CursoVO curso = criarCursoVO(rset);

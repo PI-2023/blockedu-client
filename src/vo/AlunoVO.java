@@ -19,6 +19,14 @@ public class AlunoVO {
     this.telefoneCelular = telefoneCelular;
   }
 
+  public AlunoVO(String cpf, String nome, String email, LocalDate dataNascimento, String telefoneCelular) {
+    this.cpf = cpf;
+    this.nome = nome;
+    this.email = email;
+    this.dataNascimento = dataNascimento;
+    this.telefoneCelular = telefoneCelular;
+  }
+
   public int getId() {
     return id;
   }
