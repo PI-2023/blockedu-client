@@ -12,6 +12,7 @@ import java.util.List;
 
 import interfaces.dao.IAlunoDAO;
 import vo.AlunoVO;
+import vo.InstituicaoEnsinoVO;
 
 public class AlunoDAO implements IAlunoDAO {
   private Connection conexao;
@@ -33,11 +34,12 @@ public class AlunoDAO implements IAlunoDAO {
 	}
 
   @Override
-  public AlunoVO buscar(String cpf) throws AlunoDAOException {
+  public AlunoVO buscar(InstituicaoEnsinoVO instituicao, String cpf) throws AlunoDAOException {
     try {
-      PreparedStatement stmt = this.conexao.prepareStatement("SELECT * FROM Aluno WHERE cpf = ?;");
+      PreparedStatement stmt = this.conexao.prepareStatement("SELECT * FROM Aluno WHERE cpf = ? AND instituicao_id = ?;");
       
       stmt.setString(1, cpf);
+      stmt.setInt(2, instituicao.getId());
       ResultSet rset = stmt.executeQuery();
 
       if (rset.next()) {
@@ -51,11 +53,12 @@ public class AlunoDAO implements IAlunoDAO {
   }
 
   @Override
-  public AlunoVO buscar(Integer id) throws AlunoDAOException {
+  public AlunoVO buscar(InstituicaoEnsinoVO instituicao, Integer id) throws AlunoDAOException {
     try {
-      PreparedStatement stmt = this.conexao.prepareStatement("SELECT * FROM Aluno WHERE id = ?;");
+      PreparedStatement stmt = this.conexao.prepareStatement("SELECT * FROM Aluno WHERE id = ? AND instituicao_id = ?;");
       
       stmt.setInt(1, id);
+      stmt.setInt(2, instituicao.getId());
       ResultSet rset = stmt.executeQuery();
 
       if (rset.next()) {
@@ -69,12 +72,13 @@ public class AlunoDAO implements IAlunoDAO {
   }
 
   @Override
-  public List<AlunoVO> buscarTodos() throws AlunoDAOException {
+  public List<AlunoVO> buscarTodos(InstituicaoEnsinoVO instituicao) throws AlunoDAOException {
     List<AlunoVO> alunos = new ArrayList<>();
 
     try {
-      Statement stmt = this.conexao.createStatement();
-      ResultSet rset = stmt.executeQuery("SELECT * FROM Aluno;");
+      PreparedStatement stmt = this.conexao.prepareStatement("SELECT * FROM Aluno WHERE instituicao_id = ?;");
+      stmt.setInt(1, instituicao.getId());
+      ResultSet rset = stmt.executeQuery();
 
       while (rset.next()) {
         AlunoVO aluno = criarAlunoVO(rset);
@@ -88,8 +92,8 @@ public class AlunoDAO implements IAlunoDAO {
   }
 
   @Override
-  public void inserir(AlunoVO alunoVO) throws AlunoDAOException {
-    String query = "INSERT INTO Aluno (cpf, nome, email, data_nascimento, telefone_celular) VALUES (?, ?, ?, ?, ?);";
+  public void inserir(InstituicaoEnsinoVO instituicao, AlunoVO alunoVO) throws AlunoDAOException {
+    String query = "INSERT INTO Aluno (cpf, nome, email, data_nascimento, telefone_celular, instituicao_id) VALUES (?, ?, ?, ?, ?, ?);";
 
     try {
       PreparedStatement stmt = this.conexao.prepareStatement(query);
@@ -98,6 +102,7 @@ public class AlunoDAO implements IAlunoDAO {
       stmt.setString(3, alunoVO.getEmail());
       stmt.setDate(4, Date.valueOf(alunoVO.getDataNascimento()));
       stmt.setString(5, alunoVO.getTelefoneCelular());
+      stmt.setInt(6, instituicao.getId());
       stmt.executeUpdate();
     } catch (Exception e) {
       throw new AlunoDAOException(e.getMessage());
@@ -105,8 +110,8 @@ public class AlunoDAO implements IAlunoDAO {
   }
 
   @Override
-  public void atualizar(AlunoVO alunoVO) throws AlunoDAOException {
-    String query = "UPDATE Aluno SET cpf = ?, nome = ?, email = ?, data_nascimento = ?, telefone_celular = ? WHERE id = ?;";
+  public void atualizar(InstituicaoEnsinoVO instituicao, AlunoVO alunoVO) throws AlunoDAOException {
+    String query = "UPDATE Aluno SET cpf = ?, nome = ?, email = ?, data_nascimento = ?, telefone_celular = ? WHERE id = ? AND instituicao_id = ?;";
 
     try {
       PreparedStatement stmt = this.conexao.prepareStatement(query);
@@ -116,6 +121,7 @@ public class AlunoDAO implements IAlunoDAO {
       stmt.setDate(4, Date.valueOf(alunoVO.getDataNascimento()));
       stmt.setString(5, alunoVO.getTelefoneCelular());
       stmt.setInt(6, alunoVO.getId());
+      stmt.setInt(7, instituicao.getId());
       stmt.executeUpdate();
     } catch (Exception e) {
       throw new AlunoDAOException(e.getMessage());
@@ -123,10 +129,11 @@ public class AlunoDAO implements IAlunoDAO {
   }
 
   @Override
-  public void excluir(String cpf) throws AlunoDAOException {
+  public void excluir(InstituicaoEnsinoVO instituicao, String cpf) throws AlunoDAOException {
     try {
-      PreparedStatement stmt = this.conexao.prepareStatement("DELETE FROM Aluno WHERE cpf = ?;"); 
+      PreparedStatement stmt = this.conexao.prepareStatement("DELETE FROM Aluno WHERE cpf = ? AND instituicao_id = ?;"); 
       stmt.setString(1, cpf);
+      stmt.setInt(2, instituicao.getId());
       stmt.executeUpdate();
     } catch (Exception e) {
       throw new AlunoDAOException(e.getMessage());
@@ -134,10 +141,11 @@ public class AlunoDAO implements IAlunoDAO {
   }
 
   @Override
-  public void excluir(Integer id) throws AlunoDAOException {
+  public void excluir(InstituicaoEnsinoVO instituicao, Integer id) throws AlunoDAOException {
     try {
-      PreparedStatement stmt = this.conexao.prepareStatement("DELETE FROM Aluno WHERE id = ?;"); 
+      PreparedStatement stmt = this.conexao.prepareStatement("DELETE FROM Aluno WHERE id = ? AND instituicao_id = ?;"); 
       stmt.setInt(1, id);
+      stmt.setInt(2, instituicao.getId());
       stmt.executeUpdate();
     } catch (Exception e) {
       throw new AlunoDAOException(e.getMessage());
