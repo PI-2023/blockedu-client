@@ -4,12 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import interfaces.dao.ICursoDAO;
 import vo.CursoVO;
+import vo.InstituicaoEnsinoVO;
 
 public class CursoDAO implements ICursoDAO {
   private Connection conexao;
@@ -31,12 +31,13 @@ public class CursoDAO implements ICursoDAO {
 	}
   
   @Override
-  public List<CursoVO> buscarTodos() throws CursoDAOException {
+  public List<CursoVO> buscarTodos(InstituicaoEnsinoVO instituicao) throws CursoDAOException {
     List<CursoVO> cursos = new ArrayList<>();
-    String query = "SELECT * FROM Curso ORDER BY nome;";
+    String query = "SELECT * FROM Curso WHERE instituicao_id = ? ORDER BY nome;";
 
     try {
-      Statement stmt = this.conexao.createStatement();
+      PreparedStatement stmt = this.conexao.prepareStatement(query);
+      stmt.setInt(1, instituicao.getId());
       ResultSet rset = stmt.executeQuery(query);
 
       while (rset.next()) {
@@ -51,14 +52,15 @@ public class CursoDAO implements ICursoDAO {
   }
 
   @Override
-  public void inserir(CursoVO cursoVO) throws CursoDAOException {
-    String query = "INSERT INTO Curso (nome, descricao, carga_horaria) VALUES (?, ?, ?);";
+  public void inserir(InstituicaoEnsinoVO instituicao, CursoVO cursoVO) throws CursoDAOException {
+    String query = "INSERT INTO Curso (nome, descricao, carga_horaria, instituicao_id) VALUES (?, ?, ?, ?);";
 
     try {
       PreparedStatement stmt = this.conexao.prepareStatement(query);
       stmt.setString(1, cursoVO.getNome());
       stmt.setString(2, cursoVO.getDescricao());
       stmt.setInt(3, cursoVO.getCargaHoraria());
+      stmt.setInt(4, instituicao.getId());
       stmt.executeUpdate();
     } catch (Exception e) {
       throw new CursoDAOException(e.getMessage());

@@ -20,7 +20,7 @@ public class AlunoBO implements IAlunoBO {
   }
 
   @Override
-  public AlunoVO buscarAluno(int instituicaoId, String cpf) throws AlunoBOException {
+  public AlunoVO buscarAluno(String cpf) throws AlunoBOException {
     try {
       return this.alunoDAO.buscar(this.instituicaoVO, cpf);
     } catch (AlunoDAOException e) {
@@ -29,7 +29,7 @@ public class AlunoBO implements IAlunoBO {
   }
 
   @Override
-  public List<AlunoVO> buscarTodosAlunos(int instituicaoId) throws AlunoBOException {
+  public List<AlunoVO> buscarTodosAlunos() throws AlunoBOException {
     try {
       return this.alunoDAO.buscarTodos(this.instituicaoVO);
     } catch (AlunoDAOException e) {
@@ -38,7 +38,7 @@ public class AlunoBO implements IAlunoBO {
   }
 
   @Override
-  public void cadastrarAluno(int instituicaoId, AlunoVO alunoVO) throws AlunoBOException {
+  public void cadastrarAluno(AlunoVO alunoVO) throws AlunoBOException {
     try {
       this.alunoDAO.inserir(this.instituicaoVO, alunoVO);
     } catch (AlunoDAOException e) {

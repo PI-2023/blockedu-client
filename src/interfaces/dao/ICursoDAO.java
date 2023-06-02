@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.CursoDAOException;
 import vo.CursoVO;
+import vo.InstituicaoEnsinoVO;
 
 public interface ICursoDAO {
   /**
@@ -11,12 +12,12 @@ public interface ICursoDAO {
    * @return Uma lista de instâncias de AlunoVO.
    * @throws CursoDAOException
    */
-  List<CursoVO> buscarTodos() throws CursoDAOException;
+  List<CursoVO> buscarTodos(InstituicaoEnsinoVO instituicao ) throws CursoDAOException;
 
   /**
    * Registra um novo curso no sistema.
    * @param cursoVO Instância de CursoVO;
    * @throws CursoDAOException
    */
-  void inserir(CursoVO cursoVO) throws CursoDAOException; 
+  void inserir(InstituicaoEnsinoVO instituicao, CursoVO cursoVO) throws CursoDAOException; 
 }
