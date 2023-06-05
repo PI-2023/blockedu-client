@@ -1,15 +1,15 @@
 package __tests__.bo;
 import org.junit.Test;
 
-import bo.Curso;
+import vo.CursoVO;
 
 import static org.junit.Assert.*;
 
-public class CursoTest {
+public class CursoBOTest {
 
     @Test
     public void testSetNome(){
-        Curso curso = new Curso("nome", "descricao", 10);
+        CursoVO curso = new CursoVO("nome", "descricao", 10);
         curso.setNome("nome");
         assertEquals("nome", curso.getNome());
 
@@ -23,7 +23,7 @@ public class CursoTest {
 
     @Test
     public void testSetDescricao(){
-        Curso curso = new Curso("nome", "descricao", 10);
+        CursoVO curso = new CursoVO("nome", "descricao", 10);
         curso.setDescricao("descricao");
         assertEquals("descricao", curso.getDescricao());
 

@@ -49,6 +49,7 @@ public class CursoView {
       List<CursoVO> cursos = cursoBO.buscarTodosCursos();
       System.out.println("----- Cursos Cadastrados -----");
       for (CursoVO curso : cursos) {
+        System.out.println("ID: " + curso.getId());
         System.out.println("Nome: " + curso.getNome());
         System.out.println("Carga Horária: " + curso.getCargaHoraria());
         System.out.println("Descrição: " + curso.getDescricao());

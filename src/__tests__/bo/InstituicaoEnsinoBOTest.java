@@ -1,14 +1,14 @@
 package __tests__.bo;
 import org.junit.Test;
 
-import bo.InstituicaoEnsinoBO;
+import vo.InstituicaoEnsinoVO;
 
 import static org.junit.Assert.*;
-public class InstituicaoEnsinoTest {
+public class InstituicaoEnsinoBOTest {
 
     @Test
     public void testSetNome() {
-        InstituicaoEnsinoBO instituicaoEnsino = new InstituicaoEnsinoBO("IFAL", "ifal@ifal.edu.br", "123456789", "123456789", "123456789");
+        InstituicaoEnsinoVO instituicaoEnsino = new InstituicaoEnsinoVO(0, "IFAL", "ifal@ifal.edu.br", "123456789", "123456789", "123456789");
         instituicaoEnsino.setNome("IFAL");
         assertEquals("IFAL", instituicaoEnsino.getNome());
 
@@ -23,7 +23,7 @@ public class InstituicaoEnsinoTest {
 
     @Test
     public void testSetEmail() {
-        InstituicaoEnsinoBO instituicaoEnsino = new InstituicaoEnsinoBO("IFAL", "ifal@ifal.edu.br", "123456789", "123456789", "123456789");
+        InstituicaoEnsinoVO instituicaoEnsino = new InstituicaoEnsinoVO(0, "IFAL", "ifal@ifal.edu.br", "123456789", "123456789", "123456789");
         instituicaoEnsino.setEmail("ifal@ifal.edu.br");
         assertEquals("ifal@ifal.edu.br", instituicaoEnsino.getEmail());
 

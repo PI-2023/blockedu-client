@@ -9,7 +9,7 @@ public class InstituicaoEnsinoVOtest {
 
     @Test
     public void testSetNome() {
-        InstituicaoEnsinoVO instituicaoEnsino = new InstituicaoEnsinoVO("IFAL", "ifal@ifal.edu.br", "123456789", "123456789", "123456789");
+        InstituicaoEnsinoVO instituicaoEnsino = new InstituicaoEnsinoVO(0, "IFAL", "ifal@ifal.edu.br", "123456789", "123456789", "123456789");
         instituicaoEnsino.setNome("IFAL");
         assert instituicaoEnsino.getNome().equals("Instituto Federal de Alagoas");
 
@@ -31,7 +31,7 @@ public class InstituicaoEnsinoVOtest {
 
     @Test
     public void testSetEmail() {
-        InstituicaoEnsinoVO instituicaoEnsino = new InstituicaoEnsinoVO("IFAL", "ifal@ifal.edu.br", "123456789", "123456789", "123456789");
+        InstituicaoEnsinoVO instituicaoEnsino = new InstituicaoEnsinoVO(0, "IFAL", "ifal@ifal.edu.br", "123456789", "123456789", "123456789");
         instituicaoEnsino.setEmail("ifal@ifal.edu.br");
         assertEquals("ifal@ifal.edu.br", instituicaoEnsino.getEmail());
 
